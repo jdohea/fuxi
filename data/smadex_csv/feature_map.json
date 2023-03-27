@@ -1,0 +1,41 @@
+{
+    "dataset_id": "smadex_csv",
+    "num_fields": 4,
+    "total_features": 10,
+    "input_length": 4,
+    "labels": [
+        "converted"
+    ],
+    "features": [
+        {
+            "release_date": {
+                "source": "",
+                "type": "numeric"
+            }
+        },
+        {
+            "release_msrp": {
+                "source": "",
+                "type": "numeric"
+            }
+        },
+        {
+            "46": {
+                "source": "",
+                "type": "categorical",
+                "padding_idx": 0,
+                "oov_idx": 3,
+                "vocab_size": 4
+            }
+        },
+        {
+            "is_smartphone": {
+                "source": "",
+                "type": "categorical",
+                "padding_idx": 0,
+                "oov_idx": 3,
+                "vocab_size": 4
+            }
+        }
+    ]
+}

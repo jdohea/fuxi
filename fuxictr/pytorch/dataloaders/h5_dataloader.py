@@ -38,7 +38,7 @@ class Dataset(data.Dataset):
         data_arrays = []
         all_cols = list(self.feature_map.features.keys()) + self.feature_map.labels
         for col in all_cols:
-            array = data_dict[col]
+            array = np.array(list(data_dict[col].values()),dtype=np.float16)
             if array.ndim == 1:
                 data_arrays.append(array.reshape(-1, 1))
             else:

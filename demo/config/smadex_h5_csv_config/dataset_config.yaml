@@ -1,4 +1,4 @@
-smadex_csv:
+smadex_csv_h5:
     data_root: ../data/
     data_format: csv    
     train_data: ../data/smadex_csv_h5/smadex_train_h5.csv

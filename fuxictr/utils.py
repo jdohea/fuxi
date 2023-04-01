@@ -109,8 +109,12 @@ class Monitor(object):
 def load_h5(data_path, verbose=0):
     if verbose == 0:
         logging.info('Loading data from h5: ' + data_path)
-    data_dict = dict()
-    with h5py.File(data_path, 'r') as hf:
-        for key in hf.keys():
-            data_dict[key] = hf[key][:]
+    # data_dict = dict()
+    # with h5py.File(data_path, 'r') as hf:
+    #     print('____________________')
+    #     for key in hf.keys():
+    #         print(hf[key].keys())
+    import pandas as pd
+    data_dict= pd.read_hdf(data_path).to_dict()
+
     return data_dict

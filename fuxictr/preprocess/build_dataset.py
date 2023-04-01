@@ -102,6 +102,9 @@ def build_dataset(feature_encoder, train_data=None, valid_data=None, test_data=N
         # fit and transform train_ddf
         train_ddf = feature_encoder.preprocess(train_ddf)
         feature_encoder.fit(train_ddf, **kwargs)
+        ### todo remove this if you want the outputted .h5 from theis preprocessing
+        return
+        ###
         transform_h5(feature_encoder, train_ddf, 'train', preprocess=False, block_size=data_block_size)
         del train_ddf
         gc.collect()

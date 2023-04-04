@@ -14,7 +14,7 @@ Base:
 
 DeepFM_smadex_testiiiiing_csv_h5:
     model: DeepFM
-    dataset_id: smadex_csv_h5
+    dataset_id: full_h5
     loss: 'binary_crossentropy'
     metrics: ['logloss', 'AUC']
     task: binary_classification

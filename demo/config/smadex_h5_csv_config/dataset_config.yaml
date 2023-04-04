@@ -1,9 +1,9 @@
 smadex_csv_h5:
     data_root: ../data/
     data_format: csv    
-    train_data: ../data/smadex_csv_h5/smadex_train_h5.csv
-    valid_data: ../data/smadex_csv_h5/smadex_val_h5.csv
-    test_data: ../data/smadex_csv_h5/smadex_test_h5.csv
+    train_data: ../data/full_h5/smadex_train_h5.csv
+    valid_data: ../data/full_h5/smadex_val_h5.csv
+    test_data: ../data/full_h5/smadex_test_h5.csv
     min_categr_count: 1
     feature_cols:
         [

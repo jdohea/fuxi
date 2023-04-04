@@ -5,7 +5,7 @@ This file has 2 outputs:
     1. x3 .h5 files. These files are train, validation and test files.
     2. A columns.txt file. This file is used to make creating the dataset_config.yaml file in the config folder in the demo section of this repository.
 
-Before we run our experiment we neec a folder in the data section of this repository. Evey experiment needs to contain the following
+Before we run our experiment we need a folder in the data section of this repository. Evey experiment needs to contain the following
  1. train.h5 valid.h5 and test.h5 files
  2. feature_map.json, feature_vocab.json and feature_processor.pkl
 
@@ -30,7 +30,7 @@ Our data is now ready for an experiment
 
 Go to the config file in the demo section that we created earlier. In model_config.yaml set a new experiment id (the tag of the first section after "Base"). Then change the dataset_id yin your new experiment to the name of your data folder in the data section of this repository. Change the experiment_id in "smadex_run_experiment_full_h5.py to this new tag. 
 
-Run "smade_run_experiment_full_h5.py". Loading takes approximately 3 minutes per data file (train,val,test). It also takes approximately 20 minutes per epoch (DeepFM) to train based on our full dataset with ~ 1500 columns. Finally validation takes 2 minutes (likewise for test). Overall the hwole code for 1 epoch takes between 30 and 35 minutes
+Run "smade_run_experiment_full_h5.py". Loading takes approximately 3 minutes per data file (train,val,test). It also takes approximately 20 minutes per epoch (DeepFM) to train based on our full dataset with ~ 1500 columns. Finally validation takes 2 minutes (likewise for test). Overall the whole code for 1 epoch takes between 30 and 35 minutes.
 _______________________
 
 To run new experiments with the same model (DeepFM in the example here), just add a new tag in the model_config.yaml file and continue to change the hyperparameres. Then set the experiment_id in the python file to the new tag and the new hyperparameters will be used

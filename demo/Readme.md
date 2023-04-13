@@ -45,10 +45,10 @@ _______________
 
 | No | Model                                    | Benchmark                                                                                                       | Score                             |
 |:--:|:----------------------------------------:|:---------------------------------------------------------------------------------------------------------------:|-----------------------------------|
-| 1   | [DeepCrossing](./model_zoo/DeepCrossing) | [:arrow_upper_right:](https://github.com/openbenchmark/BARS/tree/master/ctr_prediction/benchmarks/DeepCrossing) | logloss: 0.002606 - AUC: 0.999680 |
+| 1 | [DeepCrossing](./model_zoo/DeepCrossing) | [:arrow_upper_right:](https://github.com/openbenchmark/BARS/tree/master/ctr_prediction/benchmarks/DeepCrossing) | logloss: 0.002606 - AUC: 0.999680 |
 | 2 | [DeepFM](./model_zoo/DeepFM)             | [:arrow_upper_right:](https://github.com/openbenchmark/BARS/tree/master/ctr_prediction/benchmarks/DeepFM)       | logloss: 0.000486 - AUC: 0.999999                               |
 | 3 | [DCN](./model_zoo/DCN)                   | [:arrow_upper_right:](https://github.com/openbenchmark/BARS/tree/master/ctr_prediction/benchmarks/DCN)          | logloss: 0.000215 - AUC: 1.000000 |
-
+| 4 | Logistic Regression                      |                     -                                                                                            | logloss: 0.000391 - AUC: - |
 Todo:
 
     - set up a portfolio of experiments to run and report on for our current model, let's look at the processed other papers used to compare models. Like in the deepfm and deepcross papers
@@ -60,6 +60,8 @@ Todo:
 
     - code an ability to store test inferences to analyse how if we train multiple times with different seeds how volatile our predictions are. i.e. how much they change every time the model is re trained
 
-    -
+    - add weights for sampling bias, class weights (200) for logistic regression
 
-    -
+    - 1/1-k+(k/p) --> weighted average prediction
+    
+    - overwrite log loss, result1 = log, result0 = 200log

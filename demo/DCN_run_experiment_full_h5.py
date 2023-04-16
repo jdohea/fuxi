@@ -50,4 +50,12 @@ if __name__ == '__main__':
                             test_data=params['test_data'],
                             batch_size=params['batch_size'],
                             shuffle=False).make_iterator()
+
+    # Start the timer
+    start_time = datetime.now()
+
     model.evaluate(test_gen)
+
+    # Calculate the elapsed time
+    elapsed_time = datetime.now() - start_time
+    logging.info(f'Test set inference time: {elapsed_time}')

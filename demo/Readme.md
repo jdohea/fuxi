@@ -49,14 +49,16 @@ _______________
 | 2 | [DeepFM](./model_zoo/DeepFM)             | [:arrow_upper_right:](https://github.com/openbenchmark/BARS/tree/master/ctr_prediction/benchmarks/DeepFM)       | logloss: 0.000486 - AUC: 0.999999                               |
 | 3 | [DCN](./model_zoo/DCN)                   | [:arrow_upper_right:](https://github.com/openbenchmark/BARS/tree/master/ctr_prediction/benchmarks/DCN)          | logloss: 0.000215 - AUC: 1.000000 |
 | 4 | Logistic Regression                      |                     -                                                                                            | logloss: 0.000391 - AUC: - |
-Todo:
+
+
+    Todo:
 
     - set up a portfolio of experiments to run and report on for our current model, let's look at the processed other papers used to compare models. Like in the deepfm and deepcross papers
 
 
     - code a timer for how long it takes to inference X samples to compare time of the model
 
-    - look for (code if we can't find) and configure a normalised logloss evaluation for our experiments
+    - look for (code if we can't find) and configure a normalised logloss evaluation for our experiments --> 
 
     - code an ability to store test inferences to analyse how if we train multiple times with different seeds how volatile our predictions are. i.e. how much they change every time the model is re trained
 
@@ -65,3 +67,12 @@ Todo:
     - 1/1-k+(k/p) --> weighted average prediction
     
     - overwrite log loss, result1 = log, result0 = 200log
+     
+    - Normalised Log loss: - around 1: good, around 0: roughly same, <0: worse average
+
+    - NLL: 1 - (log(y_test,yhat_test)/log(y_test,ybar_test)
+
+    - ybar_test: avg(yhat_test)
+
+    - Amazon Sagemaker: GPU access SSH connection
+

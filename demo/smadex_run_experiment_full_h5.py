@@ -28,10 +28,10 @@ if __name__ == '__main__':
     feature_map = FeatureMap(params['dataset_id'], data_dir)
     feature_map.load(feature_map_json, params)
     logging.info("Feature specs: " + print_to_json(feature_map.features))
-    
+
     # Get train and validation data generators from h5
-    train_gen, valid_gen = H5DataLoader(feature_map, 
-                                        stage='train', 
+    train_gen, valid_gen = H5DataLoader(feature_map,
+                                        stage='train',
                                         train_data=params['train_data'],
                                         valid_data=params['valid_data'],
                                         batch_size=params['batch_size'],
@@ -40,14 +40,22 @@ if __name__ == '__main__':
     # Model initialization and fitting
     model = DeepFM(feature_map, **params)
     model.fit(train_gen, validation_data=valid_gen, epochs=params['epochs'])
-    
+
     logging.info('***** Validation evaluation *****')
     model.evaluate(valid_gen)
 
     logging.info('***** Test evaluation *****')
-    test_gen = H5DataLoader(feature_map, 
+    test_gen = H5DataLoader(feature_map,
                             stage='test',
                             test_data=params['test_data'],
                             batch_size=params['batch_size'],
                             shuffle=False).make_iterator()
+
+    # Start the timer
+    start_time = datetime.now()
+
     model.evaluate(test_gen)
+
+    # Calculate the elapsed time
+    elapsed_time = datetime.now() - start_time
+    logging.info(f'Test set inference time: {elapsed_time}')

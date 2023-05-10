@@ -1,4 +1,5 @@
-example2_DeepFM_with_h5_input.pyimport sys
+
+import sys
 sys.path.append('../')
 import os
 import logging

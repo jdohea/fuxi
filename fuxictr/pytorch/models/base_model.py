@@ -66,7 +66,9 @@ class BaseModel(nn.Module):
     def add_loss(self, inputs):
         return_dict = self.forward(inputs)
         y_true = self.get_labels(inputs)
-        loss = self.loss_fn(return_dict["y_pred"], y_true, reduction='mean')
+        weight = y_true.clone().detach()
+        weight[y_true == 0] = 200.0
+        loss = self.loss_fn(return_dict["y_pred"], y_true, reduction='mean', weight=weight)
         return loss
 
     def add_regularization(self):

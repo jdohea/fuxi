@@ -22,6 +22,7 @@ Change the identifier on the first line of dataset_config to match the name of t
 in smadex_setup_full_h5.py change the config direcories to your new respective config locations and the dataset_id to the name of the new data folder also.
 
 Now we run "smadex_setup_full_h5.py". This will take 10 to 15 minutes to run.
+    - first cd to "demo/" before running "python smadex_run_experiment_full_h5.py"
 
 When this finishes running we can delete the outputted train/test/valid.h5 files as we only needed the feature_ files as outputs from this step.
 

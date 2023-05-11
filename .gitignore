@@ -10,6 +10,7 @@ __pycache__/
 data/*
 !/data/full_h5/
 /data/full_h5/*.h5
+/data/full_h5/*.gz
 # Distribution / packaging
 .Python
 build/

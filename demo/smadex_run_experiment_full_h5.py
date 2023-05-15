@@ -11,7 +11,7 @@ from fuxictr.pytorch.torch_utils import seed_everything
 from fuxictr.pytorch.dataloaders import H5DataLoader
 from model_zoo import DeepFM
 import pickle
-# ^^suppress output
+
 
 # Load params from config files
 config_dir = './config/full_h5_config'

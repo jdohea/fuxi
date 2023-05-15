@@ -13,6 +13,7 @@ def dump_results(
         y_true,
         y_pred,
         model_config,
+        model_config_id,
         time_pred,
         time_train,
         model,
@@ -61,6 +62,7 @@ def dump_results(
     with open(folder_path + 'stats.json', 'w') as f:
         json.dump({
             'model_config': model_config,
+            'model_config_id': model_config_id,
             'time_pred': time_pred,
             'time_train': time_train,
             'nll': nll,
@@ -73,28 +75,29 @@ def dump_results(
     # write new line to AUC.csv for columns run_id, model_type, metric, model_config
     with open('results/AUC.csv', 'a') as f:
         writer = csv.writer(f)
-        writer.writerow([run_id, model_type, auc, model_config])
+        writer.writerow([run_id, model_type, auc, model_config, model_config_id])
 
     # write new line to NLL.csv for columns run_id, model_type, metric, model_config
     with open('results/NLL.csv', 'a') as f:
         writer = csv.writer(f)
-        writer.writerow([run_id, model_type, nll, model_config])
+        writer.writerow([run_id, model_type, nll, model_config, model_config_id])
 
     # write new line to pred_time.csv for columns run_id, model_type, metric, model_config
     with open('results/pred_time.csv', 'a') as f:
         writer = csv.writer(f)
-        writer.writerow([run_id, model_type, time_pred, model_config])
+        writer.writerow([run_id, model_type, time_pred, model_config, model_config_id])
 
     # write new line to train_time.csv for columns run_id, model_type, metric, model_config
     with open('results/train_time.csv', 'a') as f:
         writer = csv.writer(f)
-        writer.writerow([run_id, model_type, time_train, model_config])
+        writer.writerow([run_id, model_type, time_train, model_config, model_config_id])
 
 if __name__ == '__main__':
     y_true = [1, 0, 1, 0, 1, 0, 1, 0, 1]
     y_pred = [0.9, 0.1, 0.8, 0.2, 0.7, 0.3, 0.6, 0.4, 0.5]
     model_config = 'test'
+    model_config_id = 1
     time_pred = 1
     time_train = 2
     model = 'test'
-    dump_results(y_true, y_pred, model_config, time_pred, time_train, model)
+    dump_results(y_true, y_pred, model_config,model_config_id, time_pred, time_train, model)

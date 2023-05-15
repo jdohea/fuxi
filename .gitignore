@@ -5,6 +5,7 @@ __pycache__/
 *$py.class
 *.csv
 !demo/results/*.csv
+!data/full_h5/results/*.csv
 # C extensions
 *.so
 *.vscode

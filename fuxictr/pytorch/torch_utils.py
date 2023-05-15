@@ -36,8 +36,10 @@ def seed_everything(seed=1029):
 
 def get_device(gpu=-1):
     if gpu >= 0 and torch.cuda.is_available():
+        print('gpu available!')
         device = torch.device("cuda:" + str(gpu))
     else:
+        print('gpu NOT available.')
         device = torch.device("cpu")   
     return device
 

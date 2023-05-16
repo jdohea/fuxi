@@ -44,7 +44,7 @@ train_gen, valid_gen = H5DataLoader(feature_map,
 
 # %%
 # Model initialization and fitting
-model = DCN(feature_map, gpu=0, **params)
+model = DCN(feature_map, gpu=-1, **params)
 start_time = datetime.now()
 model.fit(train_gen, validation_data=valid_gen, epochs=params['epochs'])
 train_time = datetime.now() - start_time

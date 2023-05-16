@@ -12,8 +12,8 @@ Base:
     feature_specs: null
     feature_config: null
 
-full_h5_DCN:
-    model: DCN
+full_h5_FM:
+    model: DeepFM
     dataset_id: full_h5
     loss: 'binary_crossentropy'
     metrics: ['logloss', 'AUC']

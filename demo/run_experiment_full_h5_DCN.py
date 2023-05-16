@@ -10,12 +10,13 @@ from fuxictr.features import FeatureMap
 from fuxictr.pytorch.torch_utils import seed_everything
 from fuxictr.pytorch.dataloaders import H5DataLoader
 from model_zoo import DeepFM
+from model_zoo import DCN
 import pickle
 
 
 # Load params from config files
-config_dir = './config/full_h5_config'
-experiment_id = 'full_h5_initial' # corresponds to h5 input `data/tiny_h5`
+config_dir = './config/DCN_h5_config'
+experiment_id = 'full_h5_DCN' # corresponds to h5 input `data/tiny_h5`
 params = load_config(config_dir, experiment_id)
 
 # set up logger and random seed
@@ -43,7 +44,7 @@ train_gen, valid_gen = H5DataLoader(feature_map,
 
 # %%
 # Model initialization and fitting
-model = DeepFM(feature_map, gpu=0, **params)
+model = DCN(feature_map, gpu=0, **params)
 start_time = datetime.now()
 model.fit(train_gen, validation_data=valid_gen, epochs=params['epochs'])
 train_time = datetime.now() - start_time

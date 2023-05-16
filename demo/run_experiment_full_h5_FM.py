@@ -14,8 +14,8 @@ import pickle
 
 
 # Load params from config files
-config_dir = './config/full_h5_config'
-experiment_id = 'full_h5_initial' # corresponds to h5 input `data/tiny_h5`
+config_dir = './config/FM_h5_config'
+experiment_id = 'full_h5_FM' # corresponds to h5 input `data/tiny_h5`
 params = load_config(config_dir, experiment_id)
 
 # set up logger and random seed

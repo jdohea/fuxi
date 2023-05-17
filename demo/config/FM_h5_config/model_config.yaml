@@ -27,7 +27,7 @@ full_h5_FM:
     batch_norm: False
     net_dropout: 0
     batch_size: 128
-    embedding_dim: 4
+    embedding_dim: 100
     epochs: 40
     shuffle: True
     seed: 2019

@@ -18,6 +18,7 @@ def dump_results(
         time_train,
         model,
         model_type='DeepFM',
+        num_epochs_to_converge=None
 ):
     valid_weights = []
     y_valid = y_true
@@ -52,11 +53,6 @@ def dump_results(
     if not os.path.exists(folder_path):
         os.makedirs(folder_path)
 
-    # Save the model to the specified file path
-    file_path = os.path.join(folder_path, file_name)
-    pickle.dump(model, open(file_path, 'wb'))
-
-
     # dump all stats as json
     import json
     with open(folder_path + 'stats.json', 'w') as f:
@@ -67,7 +63,7 @@ def dump_results(
             'time_train': time_train,
             'nll': nll,
             'auc': auc,
-
+            'num_epochs_to_converge': num_epochs_to_converge,
         }, f)
     run_id = folder_path
 
@@ -91,6 +87,10 @@ def dump_results(
     with open('results/train_time.csv', 'a') as f:
         writer = csv.writer(f)
         writer.writerow([run_id, model_type, time_train, model_config_id])
+    
+    with open('results/epochs_to_converge.csv', 'a') as f:
+        writer = csv.writer(f)
+        writer.writerow([run_id, model_type, num_epochs_to_converge, model_config_id])
 
 if __name__ == '__main__':
     y_true = [1, 0, 1, 0, 1, 0, 1, 0, 1]

@@ -10,13 +10,12 @@ from fuxictr.features import FeatureMap
 from fuxictr.pytorch.torch_utils import seed_everything
 from fuxictr.pytorch.dataloaders import H5DataLoader
 from model_zoo import DeepFM
-from model_zoo import DCN
 import pickle
 
 
 # Load params from config files
-config_dir = './config/DCN_h5_config'
-experiment_id = 'full_h5_DCN' # corresponds to h5 input `data/tiny_h5`
+config_dir = './config/FM_ONLY_h5_config'
+experiment_id = 'FM_default' # corresponds to h5 input `data/tiny_h5`
 params = load_config(config_dir, experiment_id)
 
 # set up logger and random seed
@@ -44,7 +43,7 @@ train_gen, valid_gen = H5DataLoader(feature_map,
 
 # %%
 # Model initialization and fitting
-model = DCN(feature_map, gpu=-1, **params)
+model = DeepFM(feature_map, gpu=-1, **params)
 start_time = datetime.now()
 model.fit(train_gen, validation_data=valid_gen, epochs=params['epochs'])
 train_time = datetime.now() - start_time
@@ -76,7 +75,7 @@ try:
     num_epochs_to_converge= model._epoch_index + 1
 except:
     num_epochs_to_converge = 'failed'
-dump_results(y_true, y_pred,model_config, experiment_id, pred_time, train_time, model, model_type='DCN',num_epochs_to_converge=num_epochs_to_converge )
+dump_results(y_true, y_pred,model_config, experiment_id, pred_time, train_time, model, model_type='FM_Only',num_epochs_to_converge=num_epochs_to_converge )
 
 
 

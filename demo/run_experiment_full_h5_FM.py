@@ -71,8 +71,11 @@ from dump_results import dump_results
 
 pred_time = str(pred_time)
 train_time = str(train_time)
-
-dump_results(y_true, y_pred,model_config, experiment_id, pred_time, train_time, model, model_type='DeepFM' )
+try:
+    num_epochs_to_converge= model._epoch_index + 1
+except:
+    num_epochs_to_converge = 'failed'
+dump_results(y_true, y_pred,model_config, experiment_id, pred_time, train_time, model, model_type='DeepFM',num_epochs_to_converge=num_epochs_to_converge )
 
 
 

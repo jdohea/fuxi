@@ -12,20 +12,15 @@ Base:
     feature_specs: null
     feature_config: null
 
-full_h5_DCN:
-    model: DCN
+FM_default: # This is a config template
+    model: FM
     dataset_id: full_h5
-    loss: 'binary_crossentropy'
+    loss: binary_crossentropy
     metrics: ['logloss', 'AUC']
     task: binary_classification
     optimizer: adam
-    hidden_units: [32, 32]
-    hidden_activations: relu
-    net_regularizer: 0
-    embedding_regularizer: 1.e-8
-    learning_rate: 1.e-3
-    batch_norm: False
-    net_dropout: 0
+    learning_rate: 1.0e-3
+    regularizer: 0
     batch_size: 128
     embedding_dim: 100
     epochs: 40

@@ -42,6 +42,7 @@ train_gen, valid_gen = H5DataLoader(feature_map,
                                     shuffle=params['shuffle']).make_iterator()
 
 
+
 # %%
 # Model initialization and fitting
 model = DCN(feature_map, gpu=-1, **params)
@@ -76,7 +77,14 @@ try:
     num_epochs_to_converge= model._epoch_index + 1
 except:
     num_epochs_to_converge = 'failed'
-dump_results(y_true, y_pred,model_config, experiment_id, pred_time, train_time, model, model_type='DCN',num_epochs_to_converge=num_epochs_to_converge )
+dump_results(y_true, y_pred,model_config, experiment_id+'_no_shuffle', pred_time, train_time, model, model_type='DCN',num_epochs_to_converge=num_epochs_to_converge )
 
-
+# get test predictions
+test_gen = H5DataLoader(feature_map,
+                        stage='test',
+                        test_data=params['test_data'],
+                        batch_size=params['batch_size'],
+                        shuffle=False).make_iterator()
+y_pred = model.predict(test_gen)
+dump_results(y_true, y_pred,model_config, experiment_id+'_no_shuffle_test', pred_time, train_time, model, model_type='DCN',num_epochs_to_converge=num_epochs_to_converge )
 

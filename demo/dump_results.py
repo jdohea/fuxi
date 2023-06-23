@@ -92,6 +92,15 @@ def dump_results(
         writer = csv.writer(f)
         writer.writerow([run_id, model_type, num_epochs_to_converge, model_config_id])
 
+    # pickle the predictions
+    with open('y_pred_'+model_type+'_'+model_config_id+'.pkl', 'wb') as f:
+        pickle.dump(y_pred, f)
+    
+    #pickle the true labels
+    with open('y_true_'+model_type+'_'+model_config_id+'.pkl', 'wb') as f:
+        pickle.dump(y_true, f)
+
+
 if __name__ == '__main__':
     y_true = [1, 0, 1, 0, 1, 0, 1, 0, 1]
     y_pred = [0.9, 0.1, 0.8, 0.2, 0.7, 0.3, 0.6, 0.4, 0.5]
